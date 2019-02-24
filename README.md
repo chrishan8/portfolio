@@ -1,8 +1,7 @@
 [![Build Status](https://travis-ci.org/chrishan8/portfolio.svg?branch=master)](https://travis-ci.org/chrishan8/portfolio)
 # portfolio
 
-> My portfolio site
-> https://chrishan8.github.io/portfolio/
+> My portfolio site: https://chrishan8.github.io/portfolio/
 
 ## Build Setup
 
