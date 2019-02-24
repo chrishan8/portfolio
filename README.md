@@ -2,6 +2,7 @@
 # portfolio
 
 > My portfolio site
+> https://chrishan8.github.io/portfolio/
 
 ## Build Setup
 
