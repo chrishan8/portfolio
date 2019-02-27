@@ -33,17 +33,13 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   #component-nav-desktop {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
     grid-template-areas: "link-home . link-about link-projects link-email link-linkedin link-resume";
     background-color: $color-primary-bg;
-  }
-  .nav-item {
-    position: relative;
-    text-align: center;
   }
   .nav-item:before {
     content: '';
@@ -57,6 +53,10 @@
   .nav-item:hover:before {
     width: 80%;
     transition: width 0.5s;
+  }
+  .nav-item {
+    position: relative;
+    text-align: center;
   }
   .nav-item-link {
     line-height: 3.5em;
