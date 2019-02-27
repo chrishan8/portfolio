@@ -1,16 +1,23 @@
 <template>
   <div id="app">
-    <component-nav-desktop />
+    <div id="desktop">
+      <component-nav-desktop />
+    </div>
+    <div id="mobile">
+      <component-nav-mobile />
+    </div>
     <nuxt />
   </div>
 </template>
 
 <script>
   import NavDesktop from '~/components/NavDesktop'
+  import NavMobile from '~/components/NavMobile'
 
   export default {
     components: {
-      'component-nav-desktop': NavDesktop
+      'component-nav-desktop': NavDesktop,
+      'component-nav-mobile': NavMobile
     },
     data() {
       return {
@@ -24,5 +31,19 @@
   @import url("https://fonts.googleapis.com/css?family=Montserrat");
   #app {
     font-family: 'Montserrat', sans-serif;
+  }
+  #desktop {
+    display: none;
+  }
+  #mobile {
+    display: block;
+  }
+  @media only screen and (min-width: 760px) {
+    #desktop {
+      display: block;
+    }
+    #mobile {
+      display: none;
+    }
   }
 </style>
