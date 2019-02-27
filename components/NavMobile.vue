@@ -27,8 +27,16 @@
     },
     computed: {
       ...mapState({
-        routes: state => state.navigation.routes
+        routes: state => Object.values(state.navigation.routes)
       })
+    },
+    mounted() {
+      this.getRoutes()
+    },
+    methods: {
+      getRoutes() {
+        this.$store.dispatch('navigation/getNavigation')
+      }
     }
   }
 </script>
