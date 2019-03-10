@@ -18,9 +18,6 @@
 </template>
 
 <script>
-  import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-
   import { mapState } from 'vuex'
   export default {
     data() {
