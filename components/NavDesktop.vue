@@ -3,13 +3,13 @@
     <div v-for="r in routes" :key="r.id" class="nav-item" :class="r.id">
       <a v-if="r.external" class="nav-item-link" :href="r.url">
         <span v-if="r.icon" :title="r.description">
-          <img :src="r.icon" />
+          <font-awesome-icon :icon="r.icon" />
         </span>
         <span v-else>{{ r.title }}</span>
       </a>
       <nuxt-link v-else class="nav-item-link" :to="r.url">
         <span v-if="r.icon" :title="r.description">
-          <img :src="r.icon" />
+          <font-awesome-icon :icon="r.icon" />
         </span>
         <span v-else>{{ r.title }}</span>
       </nuxt-link>
@@ -18,6 +18,9 @@
 </template>
 
 <script>
+  import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+
   import { mapState } from 'vuex'
   export default {
     data() {
