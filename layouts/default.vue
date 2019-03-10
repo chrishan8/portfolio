@@ -7,15 +7,18 @@
       <component-nav-mobile />
     </div>
     <nuxt />
+    <component-footer />
   </div>
 </template>
 
 <script>
+  import Footer from '~/components/Footer'
   import NavDesktop from '~/components/NavDesktop'
   import NavMobile from '~/components/NavMobile'
 
   export default {
     components: {
+      'component-footer': Footer,
       'component-nav-desktop': NavDesktop,
       'component-nav-mobile': NavMobile
     },
