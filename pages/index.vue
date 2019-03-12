@@ -1,16 +1,21 @@
 <template>
-  <h1>Hello World</h1>
+  <div id="page-home">
+    <component-splash />
+  </div>
 </template>
 
 <script>
-//import Logo from '~/components/Logo.vue'
+  import Splash from '~/components/Splash'
 
-export default {
-  // components: {
-  //   Logo
-  // }
-}
+  export default {
+    async fetch({store, params}) {
+      await store.dispatch('biography/getBio')
+    },
+    components: {
+      'component-splash': Splash
+    }
+  }
 </script>
 
-<style>
+<style lang="scss" scoped>
 </style>
