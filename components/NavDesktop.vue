@@ -27,7 +27,7 @@
     },
     computed: {
       ...mapState({
-        routes: state => state.navigation.routes
+        'routes': state => Object.keys(state.navigation.routes).map(k => ({ id: k, ...state.navigation.routes[k] }))
       })
     }
   }

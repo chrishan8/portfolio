@@ -1,13 +1,13 @@
 <template>
   <div id="component-footer">
     <div v-for="r in routes" :key="r.id" class="nav-item" :class="r.id">
-        <a class="nav-item-link" :href="r.url">
-          <span v-if="r.icon" :title="r.description">
-            <font-awesome-icon :icon="r.icon" />
-          </span>
-          <span v-else>{{ r.title }}</span>
-        </a>
-      </div>
+      <a class="nav-item-link" :href="r.url">
+        <span v-if="r.icon" :title="r.description">
+          <font-awesome-icon :icon="r.icon" />
+        </span>
+        <span v-else>{{ r.title }}</span>
+      </a>
+    </div>
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     ...mapState({
-      'routes': state => state.navigation.routes.filter(r => r.external)
+      'routes': state => Object.keys(state.navigation.routes).map(k => ({ id: k, ...state.navigation.routes[k] })).filter(r => r.external)
     })
   }
 }
