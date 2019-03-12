@@ -1,5 +1,7 @@
 export const state = () => ({
-  routes: []
+  routes: {
+
+  }
 })
 
 export const mutations = {
@@ -11,10 +13,8 @@ export const mutations = {
 export const actions = {
   async getNavigation({ commit }) {
     try {
-      const routesSnapshot = await this.$firestore.collection('pages').get()
-      const routes = routesSnapshot.docChanges().map(change => {
-        return { id: change.doc.id, ...change.doc.data() }
-      })
+      const snapshot = await this.$firestore.collection('pages').get()
+      const routes = snapshot.docChanges().reduce((obj, change) => ({...obj, [change.doc.id]: change.doc.data()}), {})
       commit('PUT_ROUTE', routes)
     }
     catch(e) {
