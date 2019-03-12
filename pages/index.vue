@@ -1,7 +1,6 @@
 <template>
   <div id="page-home">
     <component-splash />
-    <h1>Hello World</h1>
   </div>
 </template>
 
