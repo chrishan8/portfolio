@@ -36,7 +36,7 @@
 <style lang="scss" scoped>
   #component-nav-desktop {
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr 1fr auto auto auto;
     grid-template-rows: auto;
     grid-template-areas: "link-home . link-about link-projects link-email link-linkedin link-resume";
     background-color: $color-primary-bg;
@@ -57,6 +57,7 @@
   .nav-item {
     position: relative;
     text-align: center;
+    margin: 0 1em;
   }
   .nav-item-link {
     line-height: 3.5em;

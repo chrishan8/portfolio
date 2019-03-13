@@ -47,13 +47,15 @@
 <style lang="scss" scoped>
   #section-splash {
     display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
     grid-template-areas: 
-      "img-profile summary summary"
-      "img-profile btn-projects .";
-    margin-left: 15%;
-    margin-right: 15%;
+      "img-profile"
+      "summary"
+      "btn-projects";
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
   }
   .btn-projects {
     grid-area: btn-projects;
@@ -71,26 +73,27 @@
   .summary {
     grid-area: summary;
     font-size: 16pt;
+    text-align: center;
   }
   .img-profile {
     grid-area: img-profile;
     width: 300px;
     height: 300px;
-    margin: 0 3em;
+    margin: auto;
   }
   .img-profile img {
-    max-width:100%;
-    max-height:100%;
+    max-width: 100%;
+    max-height: 100%;
     border-radius: 50%;
   }
   .cards {
     display: grid;
-    grid-template-columns: 300px 300px;
-    grid-template-rows: auto auto;
+    grid-template-columns: 300px;
+    grid-template-rows: auto;
     grid-column-gap: 20px;
     grid-row-gap: 20px;
+    width: 300px;
     margin: auto;
-    width: 620px;
   }
   #section-projects .title {
     text-align: center;
@@ -98,5 +101,32 @@
   .section {
     margin-top: 10%;
     margin-bottom: 10%;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    #section-splash {
+      grid-template-columns: auto auto auto;
+      grid-template-rows: auto;
+      grid-template-areas: 
+        "img-profile summary summary"
+        "img-profile btn-projects .";
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 75%;
+    }
+    .img-profile {
+      margin: 0 3em;
+    }
+    .summary {
+      text-align: left;
+    }
+    .cards {
+      grid-template-columns: 300px 300px;
+      grid-template-rows: auto auto;
+      grid-column-gap: 20px;
+      grid-row-gap: 20px;
+      margin: auto;
+      width: 620px;
+    }
   }
 </style>
