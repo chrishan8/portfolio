@@ -51,14 +51,19 @@
   #component-nav-mobile {
     position: relative;
   }
-
   #navbar {
     display: flex;
     background-color: $color-primary-bg;
-    padding: 1em;
+    // padding: 1em;
+    height: 50px;
     justify-content: flex-end;
   }
-
+  #btn-menu-toggle {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 1em;
+    z-index: 2;
+  }
   #btn-menu-toggle .bar {
     display: block;
     width: 33px;
@@ -67,41 +72,40 @@
     position: relative;
     background: #cdcdcd;
     border-radius: 3px;
-    z-index: 1;
     transform-origin: 4px 0px;
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
                 background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
                 opacity 0.55s ease;
   }
-
   #btn-menu-toggle .bar:first-child {
     transform-origin: 0% 0%;
   }
-
   #btn-menu-toggle .bar:nth-last-child(2) {
     transform-origin: 0% 100%;
   }
-
+  #btn-menu-toggle.active {
+    position: fixed;
+    top: 1em;
+    right: 1em;
+  }
   #btn-menu-toggle.active .bar {
     opacity: 1;
-    transform: rotate(45deg) translate(-6px, -14px);
+    transform: rotate(45deg) translate(0px, -20px);
     background: #232323;
   }
-
   #btn-menu-toggle.active .bar:nth-last-child(3) {
     opacity: 0;
     transform: rotate(0deg) scale(0.2, 0.2);
   }
-
   #btn-menu-toggle.active .bar:nth-last-child(2) {
-    transform: rotate(-45deg) translate(-6px, 14px);
+    transform: rotate(-45deg) translate(0px, 20px);
   }
-  
   #menu {
-    position: absolute;
+    position: fixed;
+    z-index: 1;
     top: -100vh;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto;
@@ -116,7 +120,6 @@
     -webkit-font-smoothing: antialiased;
     /* to stop flickering of text in safari */
   }
-
   #menu.active {
     transform: translate(0, 100%);
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
