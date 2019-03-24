@@ -14,7 +14,7 @@
           v-for="p in projects" 
           :key="p.id"
           :project-id="p.id"
-          :show-skills="true"
+          :show-details="false"
         />
       </div>
     </div>
@@ -36,7 +36,7 @@
     computed: {
       ...mapState({
         'profileImageUrl': state => state.biography.profileImageUrl,
-        'projects': state => Object.keys(state.projects.data).map(k => ({ id: k, ...state.projects.data[k] })),
+        'projects': state => Object.keys(state.projects.data).map(key => ({ id: key, ...state.projects.data[key] })).sort((a, b) => a.sequence - b.sequence ).slice(0, 4),
         'shortSummary': state => state.biography.shortSummary
       })
     }
@@ -92,7 +92,7 @@
     margin: auto;
   }
   .section {
-    margin: 10% 8px;
+    margin: 5% 8px;
   }
   #section-projects .title {
     text-align: center;
@@ -119,8 +119,8 @@
       align-self: end;
     }
     .cards {
-      grid-template-columns: auto auto;
-      grid-template-rows: auto auto;
+      grid-template-columns: 300px 300px;
+      grid-template-rows: auto;
       grid-column-gap: 20px;
       grid-row-gap: 20px;
       margin: auto;
