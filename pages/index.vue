@@ -13,9 +13,8 @@
         <component-card
           v-for="p in projects" 
           :key="p.id"
-          :background-image-url="p.backgroundImageUrl" 
-          :description="p.description"
-          :title="p.title"
+          :project-id="p.id"
+          :show-skills="true"
         />
       </div>
     </div>
@@ -53,9 +52,6 @@
       "img-profile"
       "summary"
       "btn-projects";
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
   }
   .btn-projects {
     grid-area: btn-projects;
@@ -95,12 +91,11 @@
     width: 300px;
     margin: auto;
   }
+  .section {
+    margin: 10% 8px;
+  }
   #section-projects .title {
     text-align: center;
-  }
-  .section {
-    margin-top: 10%;
-    margin-bottom: 10%;
   }
 
   @media only screen and (min-width: 1024px) {
@@ -110,18 +105,21 @@
       grid-template-areas: 
         "img-profile summary summary"
         "img-profile btn-projects .";
-      margin-left: auto;
-      margin-right: auto;
       max-width: 75%;
+      height: calc(100vh - 112px);
+      margin: 0 auto;
     }
     .img-profile {
+      align-self: center;
+      justify-self: center;
       margin: 0 3em;
     }
     .summary {
       text-align: left;
+      align-self: end;
     }
     .cards {
-      grid-template-columns: 300px 300px;
+      grid-template-columns: auto auto;
       grid-template-rows: auto auto;
       grid-column-gap: 20px;
       grid-row-gap: 20px;

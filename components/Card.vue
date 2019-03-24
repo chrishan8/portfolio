@@ -1,40 +1,56 @@
 <template>
   <div id="component-card">
-    <img :src="backgroundImageUrl" class="background-image" />
-    <div class="overlay">
-      <div class="text">
-        <p class="title">{{ title }}</p>
-        <p class="description">{{ description }}</p>
+    <div class="summary">
+      <img :src="backgroundImageUrl" class="background-image" />
+      <div class="overlay">
+        <div class="text">
+          <p class="title">{{ title }}</p>
+          <p class="description">{{ description }}</p>
+        </div>
       </div>
+    </div>
+    <div class="details" v-if="showSkills">
+      Skills
     </div>
   </div>
 </template>
 
 <script>
+  import { mapState } from 'vuex'
   export default {
+    props: {
+      projectId: String,
+      showSkills: Boolean
+    },
     data() {
       return {
 
       }
     },
-    props: {
-      backgroundImageUrl: String,
-      description: String,
-      title: String
+    computed: {
+      ...mapState({
+        backgroundImageUrl(state) {
+          return state.projects.data[this.projectId].backgroundImageUrl
+        },
+        description(state) {
+          return state.projects.data[this.projectId].description
+        },
+        title(state) {
+          return state.projects.data[this.projectId].title
+        }
+      })
     }
   }
 </script>
 
 <style lang="scss" scoped>
-  #component-card {
-    max-width: 100%;
-    height: 100%;
+  .summary {
     position: relative;
   }
   .background-image {
     object-fit: cover;
     width: 100%;
-    height: 100%;
+    display: block;
   }
   .overlay {
     visibility: hidden;
@@ -63,5 +79,8 @@
   }
   .description {
     font-size: 12pt;
+  }
+  .details {
+    background: #22252C;
   }
 </style>
