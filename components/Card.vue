@@ -9,8 +9,10 @@
         </div>
       </div>
     </div>
-    <div class="details" v-if="showSkills">
-      Skills
+    <div class="details" v-if="showDetails">
+      <div class="skill" v-for="(s, index) of skills" :key="index">
+        {{ s }}
+      </div>
     </div>
   </div>
 </template>
@@ -20,7 +22,7 @@
   export default {
     props: {
       projectId: String,
-      showSkills: Boolean
+      showDetails: Boolean
     },
     data() {
       return {
@@ -34,6 +36,9 @@
         },
         description(state) {
           return state.projects.data[this.projectId].description
+        },
+        skills(state) {
+          return state.projects.data[this.projectId].skills
         },
         title(state) {
           return state.projects.data[this.projectId].title
@@ -53,18 +58,14 @@
     display: block;
   }
   .overlay {
-    visibility: hidden;
-    opacity: 0;
+    visibility: visible;
+    opacity: 1;
     transition: visibility 0s, opacity 0.5s linear;
     position: absolute;
     top: 0;
     background: rgba(0,0,0,0.5);
     height: 100%;
     width: 100%;
-  }
-  #component-card:hover .overlay {
-    visibility: visible;
-    opacity: 1;
   }
   .text {
     position: absolute;
@@ -82,5 +83,26 @@
   }
   .details {
     background: #22252C;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .skill {
+    margin: 0.5em;
+    background: $color-primary;
+    padding: 0.5em;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    font-size: 10pt;
+    color: white;
+  }
+  @media only screen and (min-width: 768px) {
+    .overlay {
+      visibility: hidden;
+      opacity: 0;
+    }
+    #component-card:hover .overlay {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 </style>
