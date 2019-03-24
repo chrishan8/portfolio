@@ -12,6 +12,8 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+
   import Footer from '~/components/Footer'
   import NavDesktop from '~/components/NavDesktop'
   import NavMobile from '~/components/NavMobile'
@@ -26,12 +28,30 @@
       return {
         
       }
+    },
+    computed: {
+      ...mapState({
+        'menuIsActive': state => state.navigation.menuIsActive
+      })
+    },
+    watch: {
+      menuIsActive: val => {
+        if (val) {
+          document.body.style = 'overflow: hidden'
+        }
+        else {
+          document.body.style = 'overflow: auto'
+        }
+      }
     }
   }
 </script>
 
 <style lang="scss">
   @import url("https://fonts.googleapis.com/css?family=Montserrat");
+  body {
+    margin: 0;
+  }
   #app {
     font-family: 'Montserrat', sans-serif;
   }

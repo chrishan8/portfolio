@@ -5,6 +5,7 @@
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
+        <div class="bar"></div>
       </div>
     </div>
     <div id="menu" :class="{'active': menuIsActive}">
@@ -27,22 +28,23 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex'
+  import { mapState, mapMutations } from 'vuex'
   export default {
     data() {
       return {
-        menuIsActive: false
+        
       }
     },
     computed: {
       ...mapState({
+        'menuIsActive': state => state.navigation.menuIsActive,
         'routes': state => Object.keys(state.navigation.routes).map(k => ({id: k, ...state.navigation.routes[k]}))
       })
     },
     methods: {
-      toggleMenu() {
-        this.menuIsActive = !this.menuIsActive
-      }
+      ...mapMutations({
+        'toggleMenu': 'navigation/TOGGLE_MOBILE_MENU'
+      })
     }
   }
 </script>
@@ -54,51 +56,73 @@
   #navbar {
     display: flex;
     background-color: $color-primary-bg;
-    // padding: 1em;
     height: 50px;
     justify-content: flex-end;
   }
   #btn-menu-toggle {
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-right: 1em;
+    margin: auto 12.5px;
     z-index: 2;
+    width: 40px;
+    height: 25px;
+    position: relative;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: pointer;
   }
   #btn-menu-toggle .bar {
     display: block;
-    width: 33px;
-    height: 4px;
-    margin-bottom: 5px;
-    position: relative;
-    background: #cdcdcd;
-    border-radius: 3px;
-    transform-origin: 4px 0px;
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                opacity 0.55s ease;
-  }
-  #btn-menu-toggle .bar:first-child {
-    transform-origin: 0% 0%;
-  }
-  #btn-menu-toggle .bar:nth-last-child(2) {
-    transform-origin: 0% 100%;
-  }
-  #btn-menu-toggle.active {
-    position: fixed;
-    top: 1em;
-    right: 1em;
-  }
-  #btn-menu-toggle.active .bar {
+    position: absolute;
+    height: 5px;
+    width: 100%;
+    background: black;
+    border-radius: 9px;
     opacity: 1;
-    transform: rotate(45deg) translate(0px, -20px);
-    background: #232323;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
   }
-  #btn-menu-toggle.active .bar:nth-last-child(3) {
-    opacity: 0;
-    transform: rotate(0deg) scale(0.2, 0.2);
+  #btn-menu-toggle .bar:nth-child(1) {
+    top: 0px;
   }
-  #btn-menu-toggle.active .bar:nth-last-child(2) {
-    transform: rotate(-45deg) translate(0px, 20px);
+  #btn-menu-toggle .bar:nth-child(2),#btn-menu-toggle .bar:nth-child(3) {
+    top: 10px;
+  }
+  #btn-menu-toggle .bar:nth-child(4) {
+    top: 20px;
+  }
+  #btn-menu-toggle.active .bar:nth-child(1) {
+    top: 18px;
+    width: 0%;
+    left: 50%;
+  }
+  #btn-menu-toggle.active .bar:nth-child(2) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  #btn-menu-toggle.active .bar:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  #btn-menu-toggle.active .bar:nth-child(4) {
+    top: 18px;
+    width: 0%;
+    left: 50%;
   }
   #menu {
     position: fixed;
@@ -115,7 +139,6 @@
       "link-projects link-projects link-projects"
       "link-email link-linkedin link-resume";
     background-color: $color-primary-bg;
-    transform: translate(0, -100%);
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
     -webkit-font-smoothing: antialiased;
     /* to stop flickering of text in safari */

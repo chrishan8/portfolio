@@ -1,10 +1,14 @@
 export const state = () => ({
+  menuIsActive: false,
   routes: {
 
   }
 })
 
 export const mutations = {
+  TOGGLE_MOBILE_MENU(state) {
+    state.menuIsActive = !state.menuIsActive;
+  },
   PUT_ROUTE(state, routes) {
     state.routes = routes
   }
