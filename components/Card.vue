@@ -1,7 +1,7 @@
 <template>
-  <div id="component-card">
+  <nuxt-link id="component-card" :to="'/Projects/' + this.projectId">
     <div class="summary">
-      <img :src="backgroundImageUrl" class="background-image" />
+      <img :src="thumbnail" class="background-image" />
       <div class="overlay">
         <div class="text">
           <p class="title">{{ title }}</p>
@@ -14,7 +14,7 @@
         {{ s }}
       </div>
     </div>
-  </div>
+  </nuxt-link>
 </template>
 
 <script>
@@ -31,8 +31,8 @@
     },
     computed: {
       ...mapState({
-        backgroundImageUrl(state) {
-          return state.projects.data[this.projectId].backgroundImageUrl
+        thumbnail(state) {
+          return state.projects.data[this.projectId].thumbnail
         },
         description(state) {
           return state.projects.data[this.projectId].description
