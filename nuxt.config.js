@@ -57,6 +57,7 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/moment',
     '@nuxtjs/style-resources',
     'nuxt-fontawesome'
   ],
