@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 const pkg = require('./package')
 require('dotenv').config()
 
@@ -86,6 +88,16 @@ module.exports = {
     */
     extend(config, ctx) {
       
+    }
+  },
+  generate: {
+    routes: function() {
+      return axios.get('https://firestore.googleapis.com/v1/projects/chris-chat-2e541/databases/(default)/documents/projects')
+        .then(res => {
+          return res.data.documents.map(project => {
+            return '/projects/' + project.name.substr(project.name.lastIndexOf('/') + 1)
+          })
+        })
     }
   }
 }
