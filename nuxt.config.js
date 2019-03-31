@@ -92,7 +92,7 @@ module.exports = {
   },
   generate: {
     routes: function() {
-      return axios.get('https://firestore.googleapis.com/v1/projects/chris-chat-2e541/databases/firestore/documents/projects')
+      return axios.get('https://firestore.googleapis.com/v1/projects/chris-chat-2e541/databases/(default)/documents/projects')
         .then(res => {
           return res.documents.map(project => {
             return '/projects/' + project.name.substr(project.name.lastIndexOf('/') + 1)
