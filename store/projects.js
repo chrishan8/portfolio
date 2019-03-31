@@ -5,7 +5,6 @@ export const state = () => ({
 export const mutations = {
   PUT_PROJECT(state, { id, project }) {
     state.data[id] = project
-    console.log(state.data)
   },
   PUT_PROJECTS(state, projects) {
     state.data = projects
