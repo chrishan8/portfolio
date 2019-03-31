@@ -24,7 +24,8 @@
   import { mapState } from 'vuex'
 
   export default {
-    asyncData({ params }) {
+    async asyncData({ params, store }) {
+      await store.dispatch('projects/getProject', params.projectId)
       return {
         projectId: params.projectId
       }
