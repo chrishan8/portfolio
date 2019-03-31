@@ -71,6 +71,9 @@
   }
   .splash {
     grid-area: splash;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
   }
   .summary {
     grid-area: summary;
