@@ -1,7 +1,8 @@
 export const state = () => ({
   longSummary: '',
   shortSummary: '',
-  profileImageUrl: ''
+  profileImageUrl: '',
+  profileImageBannerUrl: ''
 })
 
 export const mutations = {
@@ -9,6 +10,7 @@ export const mutations = {
     state.longSummary = bio['longSummary']
     state.shortSummary = bio['shortSummary']
     state.profileImageUrl = bio['profileImageUrl']
+    state.profileImageBannerUrl = bio['profileImageBannerUrl']
   }
 }
 
