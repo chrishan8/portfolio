@@ -5,22 +5,24 @@
       <h1 class="title">{{ this.title }}</h1>
       <p class="description">{{ this.description }}</p>
     </div>
-    <div class="date">
-      <h2 class="title">Date</h2>
-      <p>{{ startDate }} - {{ endDate }}</p>
-    </div>
-    <div class="skills">
-      <h2 class="title">Responsibilities</h2>
-      <ul class="skills-list">
-        <li v-for="(s, index) of skillNames" :key="index" class="skills-list-item">
-          {{ s }}
-        </li>
-      </ul>
-    </div>
     <div class="skills-detailed">
       <div v-for="(s, index) of skills" :key="index">
         <h2>{{ s.name }}</h2>
         <div v-html="s.description"></div>
+      </div>
+    </div>
+    <div class="aside">
+      <div class="date">
+        <h2 class="title">Date</h2>
+        <p>{{ startDate }} - {{ endDate }}</p>
+      </div>
+      <div class="skills">
+        <h2 class="title">Responsibilities</h2>
+        <ul class="skills-list">
+          <li v-for="(s, index) of skillNames" :key="index" class="skills-list-item">
+            {{ s }}
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -72,14 +74,24 @@
 <style scoped lang="scss">
   #page-project-details {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
       grid-template-rows: auto;
       grid-template-areas:
-        "splash splash"
-        "summary summary"
-        "date date"
-        "skills skills"
-        "skills-detailed skills-detailed";
+        "splash"
+        "aside"
+        "summary"
+        "skills-detailed";
+  }
+  .aside {
+    grid-area: aside;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "date"
+      "skills";
+    color: white;
+    background-color: $color-primary-bg;
   }
   .splash {
     grid-area: splash;
@@ -116,9 +128,16 @@
       grid-template-rows: auto;
       grid-template-areas:
         "splash splash splash splash splash"
-        ". summary summary date ."
-        ". summary summary skills ."
+        ". summary summary aside ."
         ". skills-detailed skills-detailed skills-detailed .";
+    }
+    .splash {
+      margin-bottom: 20px;
+    }
+    .aside {
+      border: 1px solid lightgrey;
+      color: black;
+      background-color: white;
     }
   }
 </style>
