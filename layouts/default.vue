@@ -7,7 +7,7 @@
       <component-nav-mobile />
     </div>
     <nuxt />
-    <component-footer />
+    <!-- <component-footer /> -->
   </div>
 </template>
 
@@ -50,6 +50,7 @@
 <style lang="scss">
   body {
     margin: 0;
+    background-color: $color-secondary-bg;
   }
   #app {
     font-family: 'Montserrat', sans-serif;

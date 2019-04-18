@@ -5,7 +5,7 @@
         <img :src="profileImageUrl" />
       </div>
       <p class="summary">{{ shortSummary }}</p>
-      <nuxt-link to="/About" class="btn-projects">Learn More</nuxt-link>
+      <nuxt-link to="/About" class="btn">Learn More</nuxt-link>
     </div>
     <div id="section-projects" class="section">
       <h1 class="title">Projects</h1>
@@ -51,21 +51,26 @@
     grid-template-areas: 
       "img-profile"
       "summary"
-      "btn-projects";
+      "btn";
     background-color: $color-primary-bg;
   }
-  .btn-projects {
-    grid-area: btn-projects;
+  .btn {
+    grid-area: btn;
     font-size: 14pt;
     background: $color-primary;
     color: white;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     height: 3em;
     line-height: 3em;
     padding: 0 1em;
     cursor: pointer;
     text-decoration: none;
+  }
+  .btn:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
   .summary {
     grid-area: summary;
@@ -94,7 +99,7 @@
     margin: auto;
   }
   .section {
-    margin: 5% 8px;
+    padding: 1em;
   }
   #section-projects .title {
     text-align: center;
@@ -106,7 +111,7 @@
       grid-template-rows: auto;
       grid-template-areas: 
         "img-profile summary summary"
-        "img-profile btn-projects .";
+        "img-profile btn .";
       padding: 0 10%;
       height: calc(100vh - 112px);
       margin: 0;

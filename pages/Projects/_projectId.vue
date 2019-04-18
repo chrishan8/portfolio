@@ -5,12 +5,6 @@
       <h1 class="title">{{ this.title }}</h1>
       <p class="description">{{ this.description }}</p>
     </div>
-    <div class="skills-detailed">
-      <div v-for="(s, index) of skills" :key="index">
-        <h2>{{ s.name }}</h2>
-        <div v-html="s.description"></div>
-      </div>
-    </div>
     <div class="aside">
       <div class="date">
         <h2 class="title">Date</h2>
@@ -23,6 +17,12 @@
             {{ s }}
           </li>
         </ul>
+      </div>
+    </div>
+    <div class="skills-detailed">
+      <div class="content" v-for="(s, index) of skills" :key="index">
+        <h2>{{ s.name }}</h2>
+        <div v-html="s.description"></div>
       </div>
     </div>
   </div>
@@ -78,37 +78,26 @@
       grid-template-rows: auto;
       grid-template-areas:
         "splash"
-        "aside"
         "summary"
+        "aside"
         "skills-detailed";
-  }
-  .aside {
-    grid-area: aside;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    grid-template-areas:
-      "date"
-      "skills";
-    color: white;
-    background-color: $color-primary-bg;
   }
   .splash {
     grid-area: splash;
     width: 100%;
-    height: 250px;
+    height: 50vh;
     object-fit: cover;
   }
   .summary {
     grid-area: summary;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    background: white;
     padding: 1em;
   }
-  .date {
-    grid-area: date;
-    padding: 1em;
-  }
-  .skills {
-    grid-area: skills;
+  .aside {
+    grid-area: aside;
+    color: white;
+    background-color: $color-primary-bg;
     padding: 1em;
   }
   .skills-list {
@@ -120,7 +109,12 @@
   }
   .skills-detailed {
     grid-area: skills-detailed;
+  }
+  .skills-detailed .content {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    background: white;
     padding: 1em;
+    margin: 1em 0;
   }
   @media only screen and (min-width: 768px) {
     #page-project-details {
@@ -135,9 +129,7 @@
       margin-bottom: 20px;
     }
     .aside {
-      border: 1px solid lightgrey;
-      color: black;
-      background-color: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     }
   }
 </style>
