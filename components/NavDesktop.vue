@@ -39,13 +39,13 @@
     grid-template-columns: 1fr 4fr 1fr 1fr auto auto auto;
     grid-template-rows: auto;
     grid-template-areas: "link-home . link-about link-projects link-email link-linkedin link-resume";
-    background-color: $color-primary-bg;
+    background-color: $color-secondary;
   }
   .nav-item:before {
     content: '';
     position: absolute;
     width: 0;
-    border-bottom: 4px solid $color-primary;
+    border-bottom: 4px solid white;
     bottom: 1em;
     left: 50%;
     transform: translateX(-50%);

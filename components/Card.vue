@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="details" v-if="showDetails">
-      <div class="skill" v-for="(s, index) of skills" :key="index">
+      <div class="skill" v-for="(s, index) of skillNames" :key="index">
         {{ s }}
       </div>
     </div>
@@ -37,8 +37,8 @@
         description(state) {
           return state.projects.data[this.projectId].description
         },
-        skills(state) {
-          return state.projects.data[this.projectId].skills
+        skillNames(state) {
+          return state.projects.data[this.projectId].skills.map(skill => skill.name)
         },
         title(state) {
           return state.projects.data[this.projectId].title

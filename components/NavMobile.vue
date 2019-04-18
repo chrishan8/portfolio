@@ -55,7 +55,7 @@
   }
   #navbar {
     display: flex;
-    background-color: $color-primary-bg;
+    background-color: $color-secondary;
     height: 50px;
     justify-content: flex-end;
   }

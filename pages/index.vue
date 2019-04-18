@@ -52,6 +52,7 @@
       "img-profile"
       "summary"
       "btn-projects";
+    background-color: $color-primary-bg;
   }
   .btn-projects {
     grid-area: btn-projects;
@@ -70,6 +71,7 @@
     grid-area: summary;
     font-size: 16pt;
     text-align: center;
+    color: white;
   }
   .img-profile {
     grid-area: img-profile;
@@ -105,9 +107,9 @@
       grid-template-areas: 
         "img-profile summary summary"
         "img-profile btn-projects .";
-      max-width: 75%;
+      padding: 0 10%;
       height: calc(100vh - 112px);
-      margin: 0 auto;
+      margin: 0;
     }
     .img-profile {
       align-self: center;
