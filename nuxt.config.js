@@ -1,4 +1,4 @@
-import axios from 'axios'
+const axios = require('axios')
 
 const pkg = require('./package')
 require('dotenv').config()
@@ -52,7 +52,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/firebaseConfig.js'
+    '~/plugins/firebaseConfig.js',
+    '~/plugins/sanitize'
   ],
 
   /*

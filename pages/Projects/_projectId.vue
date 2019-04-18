@@ -12,10 +12,16 @@
     <div class="skills">
       <h2 class="title">Responsibilities</h2>
       <ul class="skills-list">
-        <li v-for="(s, index) of skills" :key="index" class="skills-list-item">
+        <li v-for="(s, index) of skillNames" :key="index" class="skills-list-item">
           {{ s }}
         </li>
       </ul>
+    </div>
+    <div class="skills-detailed">
+      <div v-for="(s, index) of skills" :key="index">
+        <h2>{{ s.name }}</h2>
+        <div v-html="s.description"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -46,8 +52,11 @@
         endDate(state) {
           return this.$moment.unix(state.projects.data[this.projectId].endDate.seconds).format('MMM YYYY')
         },
+        skillNames(state) {
+          return state.projects.data[this.projectId].skills.map(skill => skill.name)
+        },
         skills(state) {
-          return state.projects.data[this.projectId].skills
+          return state.projects.data[this.projectId].skills.map(skill => ({ name: skill.name, description: this.$sanitize(skill.description) }))
         },
         startDate(state) {
           return this.$moment.unix(state.projects.data[this.projectId].startDate.seconds).format('MMM YYYY')
@@ -68,7 +77,9 @@
       grid-template-areas:
         "splash splash"
         "summary summary"
-        "date skills";
+        "date date"
+        "skills skills"
+        "skills-detailed skills-detailed";
   }
   .splash {
     grid-area: splash;
@@ -95,6 +106,10 @@
   .skills-list-item {
     margin: 1em 0;
   }
+  .skills-detailed {
+    grid-area: skills-detailed;
+    padding: 1em;
+  }
   @media only screen and (min-width: 768px) {
     #page-project-details {
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -102,7 +117,8 @@
       grid-template-areas:
         "splash splash splash splash splash"
         ". summary summary date ."
-        ". summary summary skills .";
+        ". summary summary skills ."
+        ". skills-detailed skills-detailed skills-detailed .";
     }
   }
 </style>
