@@ -27,7 +27,7 @@
     },
     computed: {
       ...mapState({
-        'routes': state => Object.keys(state.navigation.routes).map(k => ({ id: k, ...state.navigation.routes[k] }))
+        'routes': state => Object.keys(state.navigation.routes).map(k => ({ id: k, ...state.navigation.routes[k] })).filter(route => !route.external)
       })
     }
   }
