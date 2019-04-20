@@ -1,16 +1,23 @@
 export const state = () => ({
-  longSummary: '',
-  shortSummary: '',
-  profileImageUrl: '',
-  profileImageBannerUrl: ''
+  chrishan: {
+    aboutSplash: '',
+    address1: '',
+    address2: '',
+    city: '',
+    homeSplash: '',
+    phone: '',
+    profileImageUrl: '',
+    profileImageBannerUrl: '',
+    profile: '',
+    state: '',
+    title: '',
+    zipCode: ''
+  }
 })
 
 export const mutations = {
   PUT_BIO(state, bio) {
-    state.longSummary = bio['longSummary']
-    state.shortSummary = bio['shortSummary']
-    state.profileImageUrl = bio['profileImageUrl']
-    state.profileImageBannerUrl = bio['profileImageBannerUrl']
+    state.chrishan = { ...bio }
   }
 }
 

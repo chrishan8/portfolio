@@ -4,8 +4,8 @@
       <div class="img-profile">
         <img :src="profileImageUrl" />
       </div>
-      <p class="summary">{{ shortSummary }}</p>
-      <nuxt-link to="/About" class="btn">Learn More</nuxt-link>
+      <p class="summary">{{ homeSplash }}</p>
+      <nuxt-link to="/About" class="btn-cta">Learn More</nuxt-link>
     </div>
     <div id="section-projects" class="section">
       <h1 class="title">Projects</h1>
@@ -35,9 +35,9 @@
     },
     computed: {
       ...mapState({
-        'profileImageUrl': state => state.biography.profileImageUrl,
+        'profileImageUrl': state => state.biography['chrishan'].profileImageUrl,
         'projects': state => Object.keys(state.projects.data).map(key => ({ id: key, ...state.projects.data[key] })).sort((a, b) => a.sequence - b.sequence ).slice(0, 4),
-        'shortSummary': state => state.biography.shortSummary
+        'homeSplash': state => state.biography['chrishan'].homeSplash
       })
     }
   }
@@ -45,17 +45,13 @@
 
 <style lang="scss" scoped>
   #section-splash {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto auto auto;
-    grid-template-areas: 
-      "img-profile"
-      "summary"
-      "btn";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background-color: $color-primary-bg;
   }
-  .btn {
-    grid-area: btn;
+  .btn-cta {
     font-size: 14pt;
     background: $color-primary;
     color: white;
@@ -68,21 +64,19 @@
     padding: 0 1em;
     cursor: pointer;
     text-decoration: none;
+    width: 100%;
   }
-  .btn:hover {
+  .btn-cta:hover {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
   .summary {
-    grid-area: summary;
     font-size: 16pt;
     text-align: center;
     color: white;
   }
   .img-profile {
-    grid-area: img-profile;
     width: 300px;
     height: 300px;
-    margin: auto;
   }
   .img-profile img {
     max-width: 100%;
@@ -100,30 +94,17 @@
   }
   .section {
     padding: 1em;
-  }
-  #section-projects .title {
     text-align: center;
   }
 
   @media only screen and (min-width: 1024px) {
     #section-splash {
-      grid-template-columns: auto auto auto;
-      grid-template-rows: auto;
-      grid-template-areas: 
-        "img-profile summary summary"
-        "img-profile btn .";
-      padding: 0 10%;
+      padding: 0 20%;
       height: calc(100vh - 112px);
       margin: 0;
     }
-    .img-profile {
-      align-self: center;
-      justify-self: center;
-      margin: 0 3em;
-    }
-    .summary {
-      text-align: left;
-      align-self: end;
+    .btn-cta {
+      width: inherit;
     }
     .cards {
       grid-template-columns: 300px 300px;
