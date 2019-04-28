@@ -5,6 +5,7 @@ export const state = () => ({
     address2: '',
     city: '',
     homeSplash: '',
+    homeTitle: '',
     phone: '',
     profileImageUrl: '',
     profileImageBannerUrl: '',
