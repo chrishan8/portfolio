@@ -5,7 +5,7 @@
         <img :src="profileImageUrl" />
       </div>
       <h1 class="title">{{ homeTitle }}</h1>
-      <p class="summary">{{ homeSplash }}</p>
+      <p class="summary" v-html="homeSplash"></p>
       <nuxt-link to="/About" class="btn-cta">Learn More</nuxt-link>
     </div>
     <div id="section-projects" class="section">
@@ -40,7 +40,9 @@
       ...mapState({
         'profileImageUrl': state => state.biography[PROFILE_NAME].profileImageUrl,
         'projects': state => Object.keys(state.projects.data).map(key => ({ id: key, ...state.projects.data[key] })).sort((a, b) => a.sequence - b.sequence ).slice(0, 4),
-        'homeSplash': state => this.$sanitize(state.biography[PROFILE_NAME].homeSplash),
+        homeSplash(state) {
+          return this.$sanitize(state.biography[PROFILE_NAME].homeSplash)
+        },
         'homeTitle': state => state.biography[PROFILE_NAME].homeTitle
       })
     }
@@ -54,6 +56,7 @@
     align-items: center;
     justify-content: center;
     background-color: $color-primary-bg;
+    color: white;
   }
   .btn-cta {
     font-size: 14pt;
@@ -76,7 +79,6 @@
   .summary {
     font-size: 16pt;
     text-align: center;
-    color: white;
   }
   .img-profile {
     width: 300px;
