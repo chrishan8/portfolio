@@ -4,6 +4,7 @@
       <div class="img-profile">
         <img :src="profileImageUrl" />
       </div>
+      <h1 class="title">{{ homeTitle }}</h1>
       <p class="summary">{{ homeSplash }}</p>
       <nuxt-link to="/About" class="btn-cta">Learn More</nuxt-link>
     </div>
@@ -22,6 +23,8 @@
 </template>
 
 <script>
+  const PROFILE_NAME = 'chrishan'
+
   import { mapState } from 'vuex'
   import Card from '~/components/Card'
 
@@ -35,9 +38,10 @@
     },
     computed: {
       ...mapState({
-        'profileImageUrl': state => state.biography['chrishan'].profileImageUrl,
+        'profileImageUrl': state => state.biography[PROFILE_NAME].profileImageUrl,
         'projects': state => Object.keys(state.projects.data).map(key => ({ id: key, ...state.projects.data[key] })).sort((a, b) => a.sequence - b.sequence ).slice(0, 4),
-        'homeSplash': state => state.biography['chrishan'].homeSplash
+        'homeSplash': state => this.$sanitize(state.biography[PROFILE_NAME].homeSplash),
+        'homeTitle': state => state.biography[PROFILE_NAME].homeTitle
       })
     }
   }
