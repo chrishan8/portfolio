@@ -6,7 +6,7 @@
       </div>
       <h1 class="title">{{ title }}</h1>
       <div class="summary" v-html="summary"></div>
-      <nuxt-link to="/Projects" class="btn-cta">Learn More</nuxt-link>
+      <nuxt-link to="/About" class="btn-cta">Learn More</nuxt-link>
     </div>
     <div id="section-projects" class="section">
       <h1 class="title">Projects</h1>
