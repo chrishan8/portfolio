@@ -5,7 +5,7 @@
         <img :src="profileImageUrl" />
       </div>
       <h1 class="title">{{ homeTitle }}</h1>
-      <p class="summary" v-html="homeSplash"></p>
+      <div class="summary" v-html="homeSplash"></div>
       <nuxt-link to="/Projects" class="btn-cta">Learn More</nuxt-link>
     </div>
     <div id="section-projects" class="section">
