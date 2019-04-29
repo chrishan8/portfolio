@@ -9,13 +9,13 @@
         <span v-if="r.icon" :title="r.description">
           <font-awesome-icon :icon="r.icon" />
         </span>
-        <span v-else>{{ r.title }}</span>
+        <span v-else>{{ r.displayName }}</span>
       </a>
       <nuxt-link v-else class="nav-item-link" :to="r.url">
         <span v-if="r.icon" :title="r.description">
           <font-awesome-icon :icon="r.icon" />
         </span>
-        <span v-else>{{ r.title }}</span>
+        <span v-else>{{ r.displayName }}</span>
       </nuxt-link>
     </div>
   </div>
