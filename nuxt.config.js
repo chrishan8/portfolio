@@ -99,8 +99,7 @@ module.exports = {
       return axios.get('https://firestore.googleapis.com/v1/projects/chris-chat-2e541/databases/(default)/documents/projects')
         .then(res => {
           return res.data.documents.map(project => {
-            const friendlyUrlField = project.fields['friendlyUrl'];
-            return '/Projects/' + friendlyUrlField.stringValue;
+            return '/Projects/' + project.name.substr(project.name.lastIndexOf('/') + 1)
           })
         })
     }
