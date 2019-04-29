@@ -3,14 +3,11 @@
     <div class="summary">
       <img :src="thumbnail" class="background-image" />
       <div class="overlay">
-        <div class="text">
-          <p class="title">{{ title }}</p>
-          <p class="description">{{ description }}</p>
-        </div>
+        <p class="title">{{ title }}</p>
       </div>
     </div>
     <div class="details" v-if="showDetails">
-      <div class="skill" v-for="(s, index) of skillNames" :key="index">
+      <div class="role" v-for="(s, index) of roleNames" :key="index">
         {{ s }}
       </div>
     </div>
@@ -34,11 +31,8 @@
         thumbnail(state) {
           return state.projects.data[this.projectId].thumbnail
         },
-        description(state) {
-          return state.projects.data[this.projectId].description
-        },
-        skillNames(state) {
-          return state.projects.data[this.projectId].skills.map(skill => skill.name)
+        roleNames(state) {
+          return state.projects.data[this.projectId].roles.map(role => role.name)
         },
         title(state) {
           return state.projects.data[this.projectId].title
@@ -52,17 +46,24 @@
   #component-card {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    display: flex;
+    flex-direction: column;
   }
   #component-card:hover {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
   .summary {
     position: relative;
+    flex: 1;
+    background: white;
   }
   .background-image {
     object-fit: cover;
     width: 100%;
     display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
   }
   .overlay {
     visibility: visible;
@@ -74,16 +75,15 @@
     height: 100%;
     width: 100%;
   }
-  .text {
+  .title {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     color: white;
     text-align: center;
-  }
-  .title {
     font-size: 16pt;
     font-weight: bold;
+    width: 100%;
   }
   .description {
     font-size: 12pt;
@@ -93,7 +93,7 @@
     display: flex;
     flex-wrap: wrap;
   }
-  .skill {
+  .role {
     margin: 0.5em;
     background: $color-primary;
     padding: 0.5em;
