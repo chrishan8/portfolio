@@ -1,6 +1,10 @@
 <template>
   <div id="component-nav-desktop">
-    <div v-for="r in routes" :key="r.id" class="nav-item" :class="r.id">
+    <div class="nav-item">
+      <nuxt-link class="nav-item-link" to="/">Home</nuxt-link>
+    </div>
+    <div class="spacer"></div>
+    <div v-for="r in routes" :key="r.id" class="nav-item">
       <a v-if="r.external" class="nav-item-link" :href="r.url">
         <span v-if="r.icon" :title="r.description">
           <font-awesome-icon :icon="r.icon" />
@@ -27,7 +31,7 @@
     },
     computed: {
       ...mapState({
-        'routes': state => Object.keys(state.navigation.routes).map(k => ({ id: k, ...state.navigation.routes[k] })).filter(route => !route.external)
+        'routes': state => Object.keys(state.navigation.routes).map(k => ({ id: k, ...state.navigation.routes[k] })).filter(route => !route.external).sort((a, b) => a.sequence - b.sequence )
       })
     }
   }
@@ -35,10 +39,7 @@
 
 <style lang="scss" scoped>
   #component-nav-desktop {
-    display: grid;
-    grid-template-columns: 1fr 4fr 1fr 1fr auto auto auto;
-    grid-template-rows: auto;
-    grid-template-areas: "link-home . link-about link-projects link-email link-linkedin link-resume";
+    display: flex;
     background-color: $color-secondary;
   }
   .nav-item:before {
@@ -64,23 +65,5 @@
     text-decoration: none;
     color: white;
     font-size: 2rem;
-  }
-  .home {
-    grid-area: link-home;
-  }
-  .about {
-    grid-area: link-about;
-  }
-  .projects {
-    grid-area: link-projects;
-  }
-  .email {
-    grid-area: link-email;
-  }
-  .linkedin {
-    grid-area: link-linkedin;
-  }
-  .resume {
-    grid-area: link-resume;
   }
 </style>
