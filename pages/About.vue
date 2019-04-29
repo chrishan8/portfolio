@@ -64,7 +64,6 @@
   }
   .btn-cta {
     display: inline-block;
-    width: 100%;
     font-size: 14pt;
     background: $color-primary;
     color: white;
@@ -83,9 +82,6 @@
   @media only screen and (min-width: 768px) {
     .body {
       max-width: 50vw;
-    }
-    .btn-cta {
-      width: inherit;
     }
   }
 </style>

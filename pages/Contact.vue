@@ -1,6 +1,6 @@
 <template>
   <div id="page-contact">
-    <h1 class="title">{{ title }}</h1>
+    <h1 class="title">Let's Connect</h1>
     <div class="card">
       <div class="form-contact">
         <contact-form></contact-form>
@@ -52,7 +52,6 @@
         'routes': state => Object.keys(state.navigation.routes).map(key => ({ id: key, ...state.navigation.routes[key] })).filter(route => route.external),
         'profileImageUrl': state => state.biography[PROFILE_NAME].profileImageBannerUrl,
         'state': state => state.biography[PROFILE_NAME].state,
-        'title': state => state.biography[PROFILE_NAME].title,
         'zipCode': state => state.biography[PROFILE_NAME].zipCode,
       })
     }
