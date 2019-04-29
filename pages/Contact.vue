@@ -26,6 +26,8 @@
   import { mapState } from 'vuex'
   import ContactForm from '../components/ContactForm'
 
+  const PROFILE_NAME = 'chrishan'
+
   export default {
     components: {
       'contact-form': ContactForm
@@ -40,18 +42,18 @@
     },
     computed: {
       ...mapState({
-        'address1': state => state.biography['chrishan'].address1,
-        'address2': state => state.biography['chrishan'].address2,
-        'city': state => state.biography['chrishan'].city,
-        'phone': state => state.biography['chrishan'].phone,
+        'address1': state => state.biography[PROFILE_NAME].address1,
+        'address2': state => state.biography[PROFILE_NAME].address2,
+        'city': state => state.biography[PROFILE_NAME].city,
+        'phone': state => state.biography[PROFILE_NAME].phone,
         profile(state) {
-          return this.$sanitize(state.biography['chrishan'].profile)
+          return this.$sanitize(state.biography[PROFILE_NAME].profile)
         },
         'routes': state => Object.keys(state.navigation.routes).map(key => ({ id: key, ...state.navigation.routes[key] })).filter(route => route.external),
-        'profileImageUrl': state => state.biography['chrishan'].profileImageBannerUrl,
-        'state': state => state.biography['chrishan'].state,
-        'title': state => state.biography['chrishan'].title,
-        'zipCode': state => state.biography['chrishan'].zipCode,
+        'profileImageUrl': state => state.biography[PROFILE_NAME].profileImageBannerUrl,
+        'state': state => state.biography[PROFILE_NAME].state,
+        'title': state => state.biography[PROFILE_NAME].title,
+        'zipCode': state => state.biography[PROFILE_NAME].zipCode,
       })
     }
   }
@@ -70,16 +72,15 @@
     font-weight: bold;
   }
   .form-contact {
-    flex-basis: 75%;
+    flex: 1;
     padding: 1em;
   }
   .contact {
     color: white;
-    flex-basis: 25%;
     display: flex;
     flex-direction: column;
     background-color: $color-primary-bg;
-    padding: 2em;
+    padding: 1em;
   }
   .info {
     text-align: center;

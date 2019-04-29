@@ -3,6 +3,9 @@ $color-secondary: #77c9d4;
 $color-primary-bg: rgb(50, 50, 50);
 $color-secondary-bg: #E3DFDB;
 
+p {
+  line-height: 2em;
+}
 a {
   color: $color-primary;
 }
