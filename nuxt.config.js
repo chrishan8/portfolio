@@ -9,6 +9,8 @@ const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
   }
 } : {}
 
+const db = process.env.DEPLOY_ENV === 'GH_PAGES' ? 'https://firestore.googleapis.com/v1/projects/chris-chat-2e541/databases/(default)/documents/projects' : 'https://firestore.googleapis.com/v1/projects/portfolio-239722/databases/(default)/documents/projects';
+
 module.exports = {
   ...routerBase,
   mode: 'universal',
@@ -96,7 +98,7 @@ module.exports = {
   },
   generate: {
     routes: function() {
-      return axios.get('https://firestore.googleapis.com/v1/projects/chris-chat-2e541/databases/(default)/documents/projects')
+      return axios.get(db)
         .then(res => {
           return res.data.documents.map(project => {
             return '/Projects/' + project.name.substr(project.name.lastIndexOf('/') + 1)
