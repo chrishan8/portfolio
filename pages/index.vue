@@ -4,7 +4,7 @@
       <div class="img-profile">
         <img :src="profileImageUrl" />
       </div>
-      <h1 class="title">{{ title }}</h1>
+      <h1 class="title">{{ greeting }}</h1>
       <div class="summary" v-html="summary"></div>
       <nuxt-link to="/About" class="btn-cta">Learn More</nuxt-link>
     </div>
@@ -57,7 +57,7 @@
         summary(state) {
           return this.$sanitize(state.biography[PROFILE_NAME].summary)
         },
-        'title': state => state.biography[PROFILE_NAME].greeting
+        'greeting': state => state.biography[PROFILE_NAME].greeting
       })
     }
   }
