@@ -1,6 +1,6 @@
 <template>
   <div id="page-project-details">
-    <img class="splash" :src="this.backgroundImageUrl" />
+    <img class="splash" v-lazy="this.backgroundImageUrl" />
     <div class="summary">
       <h1 class="title">{{ this.title }}</h1>
       <div class="description" v-html="description"></div>

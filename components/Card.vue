@@ -1,7 +1,7 @@
 <template>
   <nuxt-link id="component-card" :to="'/Projects/' + this.projectId">
     <div class="summary">
-      <img :src="thumbnail" class="background-image" />
+      <img v-lazy="thumbnail" class="background-image" />
       <div class="overlay">
         <p class="title">{{ title }}</p>
       </div>
