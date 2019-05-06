@@ -1,6 +1,6 @@
 <template>
   <div id="page-projects">
-    <h1 class="title">Portfolio</h1>
+    <h1 class="title">{{ title }}</h1>
     <div class="cards">
       <component-card
         v-for="p in projects" 
@@ -17,6 +17,15 @@
   import Card from '~/components/Card'
 
   export default {
+    head () {
+      return {
+        title: this.title,
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          { hid: 'description', name: 'description', content: "Chris Han's Project Portfolio" }
+        ]
+      }
+    },
     async fetch({store, params}) {
       await store.dispatch('projects/getProjects')
     },
@@ -25,7 +34,7 @@
     },
     data() {
       return {
-        
+        title: 'Portfolio'
       }
     },
     computed: {
