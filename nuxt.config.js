@@ -66,6 +66,7 @@ module.exports = {
   */
   modules: [
     '@nuxtjs/moment',
+    '@nuxtjs/sitemap',
     '@nuxtjs/style-resources',
     'nuxt-fontawesome'
   ],
@@ -105,5 +106,8 @@ module.exports = {
           })
         })
     }
+  },
+  sitemap: {
+    hostname: 'https://nerdfoundry.org'
   }
 }
