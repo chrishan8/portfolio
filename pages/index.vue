@@ -29,12 +29,26 @@
   import Card from '~/components/Card'
 
   export default {
+    head () {
+      return {
+        title: this.title,
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          { hid: 'description', name: 'description', content: 'Chris Han is a freelance web developer at Nerd Foundry & Application Developer at Accenture' }
+        ]
+      }
+    },
     async fetch({store, params}) {
       await store.dispatch('biography/getBio')
       await store.dispatch('projects/getProjects')
     },
     components: {
       'component-card': Card
+    },
+    data() {
+      return {
+        title: 'Home'
+      }
     },
     computed: {
       ...mapState({

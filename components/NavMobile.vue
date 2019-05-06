@@ -11,7 +11,7 @@
     <div id="menu" :class="{'active': menuIsActive}">
       <div class="nav-items">
         <div class="nav-item">
-          <nuxt-link class="nav-item-link" to="/Home">Home</nuxt-link>
+          <nuxt-link class="nav-item-link" to="/">Home</nuxt-link>
         </div>
         <div v-for="r in routes" :key="r.id" class="nav-item">
           <a v-if="r.external" class="nav-item-link" :href="r.url">

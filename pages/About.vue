@@ -1,7 +1,7 @@
 <template>
   <div id="page-about">
     <div class="body">
-      <h1 class="title">About Me</h1>
+      <h1 class="title">{{ title }}</h1>
       <p class="profile">{{ profile }}</p>
       <h1>Services</h1>
       <div class="service-item" v-for="(s, index) of services" :key="index">
@@ -22,12 +22,21 @@
   const PROFILE_NAME = 'chrishan'
 
   export default {
+    head () {
+      return {
+        title: this.title,
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          { hid: 'description', name: 'description', content: "About Chris Han | Services Offered" }
+        ]
+      }
+    },
     async fetch({store, params}) {
       await store.dispatch('biography/getBio')
     },
     data() {
       return {
-        
+        title: 'About Me'
       }
     },
     computed: {
