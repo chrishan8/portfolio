@@ -8,7 +8,6 @@ export const state = () => ({
     homeTitle: '',
     phone: '',
     profileImageUrl: '',
-    profileImageBannerUrl: '',
     profile: '',
     state: '',
     title: '',

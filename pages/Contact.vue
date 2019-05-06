@@ -59,7 +59,6 @@
           return this.$sanitize(state.biography[PROFILE_NAME].profile)
         },
         'routes': state => Object.keys(state.navigation.routes).map(key => ({ id: key, ...state.navigation.routes[key] })).filter(route => route.external),
-        'profileImageUrl': state => state.biography[PROFILE_NAME].profileImageBannerUrl,
         'state': state => state.biography[PROFILE_NAME].state,
         'zipCode': state => state.biography[PROFILE_NAME].zipCode,
       })

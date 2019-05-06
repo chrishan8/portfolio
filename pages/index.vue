@@ -2,7 +2,7 @@
   <div id="page-home">
     <div id="section-splash" class="section">
       <div class="img-profile">
-        <img :src="profileImageUrl" />
+        <img v-lazy="profileImageUrl" />
       </div>
       <h1 class="title">{{ greeting }}</h1>
       <div class="summary" v-html="summary"></div>

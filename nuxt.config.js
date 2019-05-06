@@ -57,6 +57,7 @@ module.exports = {
   plugins: [
     '~/plugins/firebaseConfig.js',
     '~/plugins/vue-form',
+    '~/plugins/vue-lazyload',
     '~/plugins/vue-mask',
     '~/plugins/sanitize'
   ],
