@@ -1,6 +1,6 @@
 <template>
   <div id="page-contact">
-    <h1 class="title">Let's Connect</h1>
+    <h1 class="title">{{ title }}</h1>
     <div class="card">
       <div class="form-contact">
         <contact-form></contact-form>
@@ -29,6 +29,15 @@
   const PROFILE_NAME = 'chrishan'
 
   export default {
+    head () {
+      return {
+        title: this.title,
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          { hid: 'description', name: 'description', content: "Contact Chris Han for freelance or employment opportunities" }
+        ]
+      }
+    },
     components: {
       'contact-form': ContactForm
     },
@@ -37,7 +46,7 @@
     },
     data() {
       return {
-        
+        title: "Let's Connect"
       }
     },
     computed: {
